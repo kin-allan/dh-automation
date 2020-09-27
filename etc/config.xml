@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <digitalhub_automation>
+            <general>
+                <enabled>1</enabled>
+                <api_key>12341234</api_key>
+                <cpf_cnpj_fieldname>taxvat</cpf_cnpj_fieldname>
+                <razao_social_fieldname>prefix</razao_social_fieldname>
+                <nome_fantasia_fieldname>suffix</nome_fantasia_fieldname>
+                <ie_fieldname>middlename</ie_fieldname>
+            </general>
+        </digitalhub_automation>
+    </default>
+</config>

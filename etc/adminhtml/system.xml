@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+        <system>
+            <tab id="digitalhub_automation" translate="label" sortOrder="700">
+                <label>DigitalHub Automation</label>
+            </tab>
+            <section id="digitalhub_automation" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <tab>digitalhub_automation</tab>
+                <resource>DigitalHub_Automation::automation_settings</resource>
+                <group id="general" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General</label>
+                    <!-- Enabled -->
+                    <field
+                        id="enabled"
+                        translate="label"
+                        type="select"
+                        sortOrder="10"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="1">
+                            <label>Enabled?</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <!-- API Key -->
+                    <field
+                        id="api_key"
+                        translate="label comment"
+                        type="obscure"
+                        sortOrder="20"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>API Key</label>
+                            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                            <comment><![CDATA[API Key provided by the automation]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                    <!-- Endpoint -->
+                    <field
+                        id="endpoint_url"
+                        translate="label comment"
+                        type="text"
+                        sortOrder="30"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>Endpoint</label>
+                            <comment><![CDATA[The endpoint URL. Leave empty if is the magento itself.]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                    <!-- CPF/CNPJ Field name -->
+                    <field
+                        id="cpf_cnpj_fieldname"
+                        translate="label comment"
+                        type="select"
+                        sortOrder="40"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>CPF CNPJ field name</label>
+                            <source_model>DigitalHub\Automation\Model\Config\Source\Customer\Attributes</source_model>
+                            <comment><![CDATA[Determine which field is cpf/cnpj on customer information]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                    <!-- Razao Social Field name -->
+                    <field
+                        id="razao_social_fieldname"
+                        translate="label comment"
+                        type="select"
+                        sortOrder="50"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>Razao Social field name</label>
+                            <source_model>DigitalHub\Automation\Model\Config\Source\Customer\Attributes</source_model>
+                            <comment><![CDATA[Determine which field is "razao social" on customer information]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                    <!-- Nome Fantasia Field name -->
+                    <field
+                        id="nome_fantasia_fieldname"
+                        translate="label comment"
+                        type="select"
+                        sortOrder="60"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>Nome Fantasia field name</label>
+                            <source_model>DigitalHub\Automation\Model\Config\Source\Customer\Attributes</source_model>
+                            <comment><![CDATA[Determine which field is "nome fantasia" on customer information]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                    <!-- Inscrição Estadual Field name -->
+                    <field
+                        id="ie_fieldname"
+                        translate="label comment"
+                        type="select"
+                        sortOrder="70"
+                        showInDefault="1"
+                        showInWebsite="1"
+                        showInStore="0">
+                            <label>IE (Inscrição Estadual) field name</label>
+                            <source_model>DigitalHub\Automation\Model\Config\Source\Customer\Attributes</source_model>
+                            <comment><![CDATA[Determine which field is "ie" on customer information]]></comment>
+                            <depends>
+                                <field id="enabled">1</field>
+                            </depends>
+                    </field>
+                </group>
+            </section>
+        </system>
+</config>
