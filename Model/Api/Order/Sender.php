@@ -38,6 +38,7 @@ class Sender {
      */
     protected $curl;
 
+
     /**
      * Constructor
      * @param CustomerRepositoryInterface $customerRepository
@@ -105,7 +106,7 @@ class Sender {
                     'neighborhood'  => null, // TODO: non-native field on magento, which one use?
                     'city'          => $shippingAddress->getCity(),
                     'city_ibge_code'=> null, // TODO: non-native field on magento, which one use?
-                    'uf'            => $shippingAddress->getRegionId(),
+                    'uf'            => $shippingAddress->getRegionCode(),
                     'country'       => $shippingAddress->getCountryId()
                 ],
                 'items' => [],
@@ -146,17 +147,17 @@ class Sender {
                 $data['customer']['ie']            = $ieFieldName ? $order->getData($ieFieldName) : null;
 
                 if (!$data['customer']['razao_social']) {
-                    $errors[] = __('"Razao social" is a required field for CNPJ customers');
+                    $errors[] = __('"Razao social" is a required field for CNPJ customers. Order: ' . $order->getId());
                     $validOrder = false;
                 }
 
                 if (!$data['customer']['nome_fantasia']) {
-                    $errors[] = __('"Nome Fantasia" is a required field for CNPJ customers');
+                    $errors[] = __('"Nome Fantasia" is a required field for CNPJ customers. Order: ' . $order->getId());
                     $validOrder = false;
                 }
             } else {
                 $validOrder = false;
-                $errors[] = __('Invalid. Sending "' . $cpfCnpj . '" as CPF/CNPJ');
+                $errors[] = __('Invalid. Sending "' . $cpfCnpj . '" as CPF/CNPJ for order ' . $order->getId());
             }
         }
 

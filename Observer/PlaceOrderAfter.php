@@ -43,8 +43,10 @@ class PlaceOrderAfter implements ObserverInterface {
             $order = $observer->getEvent()->getData('order');
 
             if ($order && $order->getId()) {
-                $this->apiOrderSender->sendOrder($order);
+                try {
+                    $this->apiOrderSender->sendOrder($order);
+                } catch (\Exception $e) {}
             }
-        }        
+        }
     }
 }

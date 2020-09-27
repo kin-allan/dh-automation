@@ -37,12 +37,11 @@ class Curl {
             }
         }
 
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         try {
             $result = curl_exec($curl);
-            var_dump($result);exit;
             $object = json_decode($result);
             return $object;
         } catch (\Exception $e) {
